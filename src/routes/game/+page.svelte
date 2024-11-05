@@ -145,10 +145,10 @@
     </div>
     <h3 class="text-center">Game finish in {turns} turns</h3>
     <div class="bigContainer">
-        <div class="p1">
+        <div class="p1 card p-4">
             <Gameover bind:field={fieldP1} bind:player={p1Obj} />
         </div>
-        <div class="p2">
+        <div class="p2 card p-4">
             <Gameover bind:field={fieldP2} bind:player={p2Obj} />
         </div>
     </div>
@@ -188,11 +188,13 @@
     .p1 {
         grid-area: 2 / 1 / 2 / 1;
         transform: translate(33%);
+        height: fit-content;
     }
 
     .p2 {
         grid-area: 2 / 3 / 2 / 3;
         transform: translate(-23%);
+        height: fit-content;
     }
 
     h1,
