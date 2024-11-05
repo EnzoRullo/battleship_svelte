@@ -62,7 +62,7 @@
         if ($store.lastOperation === "RESET NewGame [SUCCESS]") {
             placing();
         }
-        if ($store.lastOperation === 'RESET FullReset [SUCCESS]') {
+        if ($store.lastOperation === "RESET FullReset [SUCCESS]") {
             placing();
         }
     });
@@ -80,7 +80,7 @@
             if (shipPlacing(fieldP2, ships, $store)) ++playersReady;
 
             if (playersReady == 2) {
-                console.log('num gen 1st time')//------->log
+                console.log("num gen 1st time"); //------->log
                 store.numberGenApi($store.xAxis! * $store.yAxis!);
             } else {
                 console.log("players not ready", playersReady);
@@ -111,7 +111,7 @@
     }
 
     function goHome() {
-        store.fullReset()
+        store.fullReset();
     }
 </script>
 
@@ -127,7 +127,7 @@
 </div>
 
 {#if gameOver}
-    <h1>
+    <h1 class="text-center">
         Game Over
         {#if p1Obj.score > p2Obj.score}
             <b>{$store.player1}</b> win!
@@ -137,17 +137,25 @@
             <b>we have no winners...</b>
         {/if}
     </h1>
-    <div class="buttonContainer">
-        <button on:click={newGame}> New game </button>
-        <button on:click={goHome}> Home </button>
+    <div class="buttonContainer m-4">
+        <button class="btn btn-primary p-3" on:click={newGame}>
+            New game
+        </button>
+        <button class="btn btn-primary p-3" on:click={goHome}> Home </button>
     </div>
-    <h3>Game finish in {turns} turns</h3>
+    <h3 class="text-center">Game finish in {turns} turns</h3>
     <div class="bigContainer">
         <div class="p1">
             <Gameover bind:field={fieldP1} bind:player={p1Obj} />
         </div>
         <div class="p2">
             <Gameover bind:field={fieldP2} bind:player={p2Obj} />
+        </div>
+    </div>
+{:else}
+    <div class="text-center">
+        <div class="spinner-border text-primary" style="width: 10rem; height: 10rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
         </div>
     </div>
 {/if}
